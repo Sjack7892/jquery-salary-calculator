@@ -12,7 +12,12 @@ let employees = [];
 
 function submit() {
     console.log('Submit Button Clicked!');
-    //create object
+    // Check for empty input.
+    if ($('#fNameInput').val() === '' || $('#lNameInput').val() === '' || $('#IDInput').val() === '' 
+    || $('#titleInput').val() === '' || $('#salaryInput').val() === '') {
+        alert('Please fill in missing info!');
+    }
+    
     let employeeObject = {
         firstName: $('#fNameInput').val(),
         lastName: $('#lNameInput').val(),
