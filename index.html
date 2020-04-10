@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+    <script src="vendors/jQuery.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendors/bootstrap.css">
+</head>
+<body>
+    <header>
+        <h1>Salary Calculator</h1>
+    </header>
+    <main>
+        <div>
+            <h2>Add Employee</h2>
+            <input id="fNameInput" type="text" placeholder="First Name">
+            <input id="lNameInput" type="text" placeholder="Last Name" >
+            <input id="IDInput" type="number" placeholder="ID">
+            <input id="titleInput" type="text" placeholder="Title">
+            <input id="salaryInput" type="number" placeholder="Annual Salary">
+            <button id="submitBtn" class="btn btn-success" type="submit">Submit</button>
+        </div>
+        <div>
+            <h2>Employees</h2>
+            <table class="table table-striped table-dark table-bordered">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Annual Salary</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Steve</td>
+                    <td>Jackson</td>
+                    <td>1234</td>
+                    <td>Manager</td>
+                    <td>$60,000</td>
+                    <td>
+                        <button class="btn btn-danger" type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <p>Total Monthly: </p>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
