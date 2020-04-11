@@ -14,7 +14,7 @@ let employees = [];
 function deleteRow() {
     console.log('Delete button clicked!');
     $(this).parent().parent().remove();
-    
+
 }
 
 function submit() {
@@ -53,7 +53,6 @@ function submit() {
 
     calculateTotalMonthly();
 
-    // $('#deleteBtn').on('click', deleteRow);
 }
 
 
@@ -89,8 +88,14 @@ function calculateTotalMonthly() {
         console.log('total monthly salary is ' + totalMonthly);
     }
    
-    $('#totalMonthlyOutput').empty().append(` $${formatNumber(totalMonthly.toFixed(2))}`);
+    
 
+    if (totalMonthly > 20000) {
+        $('#totalMonthlyOutput').empty().append(`<span id="red" class="badge badge-secondary">$${formatNumber(totalMonthly.toFixed(2))}</span>`);
+        alert('Total monthly value has exceded maximum!');
+    } else {
+        $('#totalMonthlyOutput').empty().append(`<span id="green" class="badge badge-secondary">$${formatNumber(totalMonthly.toFixed(2))}</span>`);
+    }
 }
 
 function formatNumber(num) {

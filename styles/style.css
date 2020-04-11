@@ -1,7 +1,17 @@
 #monthlyOutput {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     text-align: center;
-    /* float: right; */
+    float: right;
     /* display: flex;
     justify-content: flex-center; */
+}
+
+#red {
+    background-color: #dc3545;
+    color: white;
+}
+
+#green {
+background-color: #28a745;
+color: white;
 }
