@@ -24,7 +24,7 @@
         </div>
         <div>
             <h2>Employees</h2>
-            <table class="table table-striped table-dark table-bordered">
+            <table id="tableData" class="table table-striped table-dark table-bordered">
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -33,19 +33,10 @@
                     <th>Annual Salary</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>Steve</td>
-                    <td>Jackson</td>
-                    <td>1234</td>
-                    <td>Manager</td>
-                    <td>$60,000</td>
-                    <td>
-                        <button class="btn btn-danger" type="button">Delete</button>
-                    </td>
-                </tr>
+               
             </table>
             <div>
-                <p>Total Monthly: </p>
+                <p>Total Monthly:<span id="totalMonthly"></span></p>
             </div>
         </div>
     </main>
