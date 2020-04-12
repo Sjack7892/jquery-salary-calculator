@@ -49,7 +49,7 @@ function submit() {
 
     // Appended variables and table data to DOM.
     $('#tableData').append
-    (`<tr>
+        (`<tr>
     <td>${firstName}</td>
     <td>${lastName}</td>
     <td>${iD}</td>
@@ -57,7 +57,7 @@ function submit() {
     <td>$<span id="annual">${formatNumber(annualSalary)}</span></td>
     <td id="delete"><button id="deleteBtn" type="button">Delete</button></td>
     </tr>`);
-    
+
     calculateTotalMonthly();
 }
 
@@ -82,7 +82,7 @@ function deleteRow() {
 
 function calculateTotalMonthly() {
     console.log(employees);
-    
+
     // Reset totalMonthly variable.
     totalMonthly = 0;
 
@@ -106,7 +106,7 @@ function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
-  
+
 
 
 
