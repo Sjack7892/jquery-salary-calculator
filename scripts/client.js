@@ -8,25 +8,20 @@ function readyNow() {
     $('#tableData').on('click', '#deleteBtn', deleteRow);
 }
 
-
 let employees = [];
 
-function deleteRow() {
-    console.log('Delete button clicked!');
-    $(this).parent().parent().remove();
-
-}
-
 function submit() {
+    console.log('Employee info added!');
     // Check for empty input.
     if ($('#fNameInput').val() === '' || $('#lNameInput').val() === '' || $('#IDInput').val() === ''
         || $('#titleInput').val() === '' || $('#salaryInput').val() === '') {
         alert('Please fill in missing info!');
+        return;
     }
 
     firstName = $('#fNameInput').val();
-    lastName = $('#lNameInput').val()
-    ID = $('#IDInput').val();
+    lastName = $('#lNameInput').val();
+    iD = $('#IDInput').val();
     title = $('#titleInput').val();
     annualSalary = $('#salaryInput').val();
 
@@ -34,9 +29,9 @@ function submit() {
     let employeeObject = {
         firstName: $('#fNameInput').val(),
         lastName: $('#lNameInput').val(),
-        ID: $('#IDInput').val(),
+        iD: $('#IDInput').val(),
         title: $('#titleInput').val(),
-        annualSalary: $('#salaryInput').val()
+        annualSalary: Number($('#salaryInput').val())
     }
 
     $('#fNameInput').val('');
@@ -45,54 +40,48 @@ function submit() {
     $('#titleInput').val('');
     $('#salaryInput').val('');
 
-    displayEmployee();
-
-    console.log(employeeObject);
     employees.push(employeeObject);
-    console.log(employees);
+    displayEmployee();
+   
 
     calculateTotalMonthly();
 
 }
 
-
+function deleteRow() {
+    console.log('Employee info deleted!');
+    let itemToDelete = (this).closest('tr');
+    let index = $(this).parent().parent().index();
+    index -= 1;
+    employees.splice(index, 1);
+    itemToDelete.remove();
+    calculateTotalMonthly()
+}
 
 function displayEmployee() {
-    // for ( let i = 0; i < employees.length; i++) {
-    //     $('#tableData').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td>
-    // <td>${employees[i].ID}</td><td>${employees[i].title}</td><td>$${employees[i].annualSalary}</td>
-    // <td><button class="btn btn-danger" type="button">Delete</button></td></tr>`);
-    // }
-
-
     $('#tableData').append
-    (`<tr><td>${firstName}</td>
+    (`<tr>
+    <td>${firstName}</td>
     <td>${lastName}</td>
-    <td>${ID}</td>
+    <td>${iD}</td>
     <td>${title}</td>
-    <td>$${formatNumber(annualSalary)}</td>
-    <td id="delete"><button id="deleteBtn" class="btn btn-danger" type="button">Delete</button></td></tr>`);
-
-    
+    <td>$<span id="annual">${formatNumber(annualSalary)}</span></td>
+    <td id="delete"><button id="deleteBtn" type="button">Delete</button></td>
+    </tr>`); 
 }
 
 function calculateTotalMonthly() {
-    let totalMonthly = 0;
-
+    console.log(employees);
+    totalMonthly = 0;
     for (let i = 0; i < employees.length; i++) {
-        console.log('individual yearly salary is ' + employees[i].annualSalary);
-        let individualMonthlySalary = employees[i].annualSalary / 12;
-        console.log('individual monthly salary is ' + individualMonthlySalary);
-        totalMonthly += individualMonthlySalary;
-
-        console.log('total monthly salary is ' + totalMonthly);
+        totalMonthly += employees[i].annualSalary;
     }
-   
-    
+    totalMonthly /= 12;
 
     if (totalMonthly > 20000) {
-        $('#totalMonthlyOutput').empty().append(`<span id="red" class="badge badge-secondary">$${formatNumber(totalMonthly.toFixed(2))}</span>`);
         alert('Total monthly value has exceded maximum!');
+        $('#totalMonthlyOutput').empty().append(`<span id="red" class="badge badge-secondary">$${formatNumber(totalMonthly.toFixed(2))}</span>`);
+        
     } else {
         $('#totalMonthlyOutput').empty().append(`<span id="green" class="badge badge-secondary">$${formatNumber(totalMonthly.toFixed(2))}</span>`);
     }
@@ -100,7 +89,7 @@ function calculateTotalMonthly() {
 
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-  }
+}
 
   
 

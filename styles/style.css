@@ -1,9 +1,7 @@
-#monthlyOutput {
-    /* margin: 0 auto; */
+#monthlyOutput { 
     text-align: center;
     float: right;
-    /* display: flex;
-    justify-content: flex-center; */
+    margin-top: 10px;
 }
 
 #red {
@@ -15,3 +13,35 @@
 background-color: #28a745;
 color: white;
 }
+
+h1 {
+    text-align: center;
+    color: #17a2b8;
+    margin-top: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #17a2b8;
+    margin-bottom: 20px;
+}
+
+#tableData {
+    margin-bottom: 40px;
+}
+
+#submitBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+#deleteBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+table {
+    text-align: center;
+}
+
+
